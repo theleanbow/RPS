@@ -1,10 +1,12 @@
-console.log("Rock Papers Scissors")
+console.log("Welcome to Rock, Papers, Scissors Console-based Game!!!")
 
+//generate rock, paper, scissors randomly
 function computerPlay(){
     choices=["rock", "paper", "scissors"];
     return (choices[Math.floor (Math.random()*3)]);
 }
 
+//compare the win and loose and return the value
 function playRound (playerSelection, computerSelection){
     if (choices.includes (playerSelection.toLowerCase())){
         console.log(playerSelection, computerSelection);
@@ -24,6 +26,7 @@ function playRound (playerSelection, computerSelection){
 }
 }
 
+//main game
 function game(){
     for (let i =0; i<5;i++){
         const playerSelection= (prompt("Rock, paper or scissors")).toLowerCase();
@@ -32,4 +35,6 @@ function game(){
    console.log(playRound(playerSelection, computerSelection));
 }
 }
+
+//function call 
 game();
