@@ -1,0 +1,11 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.buttons {
+  padding: 5%;
+  font-size: 2em;
+  text-transform: uppercase;
+}
