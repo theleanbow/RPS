@@ -17,17 +17,14 @@ function computerPlay() {
 //compare the win and loose and return the value
 function playRound(playerSelect, computerSelection) {
   playerSelection = playerSelect.toLowerCase();
-  if (playerSelection === computerSelection) {
-    return "draw";
-  } else if (
+  if (playerSelection === computerSelection) return "draw";
+  if (
     (playerSelection == "rock" && computerSelection == "paper") ||
     (playerSelection == "paper" && computerSelection == "scissors") ||
     (playerSelection == "scissors" && computerSelection == "rock")
-  ) {
+  )
     return "lose";
-  } else {
-    return "win";
-  }
+  return "win";
 }
 //display the result
 function result(player, computer) {
