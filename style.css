@@ -5,8 +5,24 @@
 }
 .container {
   height: 70vh;}
-.buttons, .score {
-  padding: 5%;
-  font-size: 2em;
-  text-transform: uppercase;
+  .buttons, .score {
+    padding: 5%;
+    font-size: 2em;
+    text-transform: uppercase;
+  }
+  
+  .buttons{
+  background-size: cover;
+}
+
+.rock{
+  background-image: url("images/rock.png");
+}
+
+.paper{
+  background-image: url("images/rock.png");
+}
+
+.scissors{
+  background-image: url("images/rock.png");
 }
