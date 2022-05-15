@@ -6,7 +6,7 @@ const div = document.createElement("div");
 const scoreCards = document.createElement("div");
 const buttons = document.querySelectorAll(".buttons");
 const button = document.querySelector(".buttons");
-let isGameOver = false;
+// let isGameOver = false;
 
 //generate rock, paper, scissors randomly
 function computerPlay() {
@@ -46,22 +46,19 @@ function result(player, computer) {
     isGameOver = true;
   }
 }
-while (isGameOver != true) {
-  buttons.forEach((button) => {
-    const playerSelection = button.innerHTML;
-    button.addEventListener("click", function returned() {
-      const computerSelection = computerPlay();
-      value = playRound(playerSelection, computerSelection);
+buttons.forEach((button) => {
+  const playerSelection = button.innerHTML;
+  button.addEventListener("click", function returned() {
+    const computerSelection = computerPlay();
+    value = playRound(playerSelection, computerSelection);
+    if (computer < 5 && player < 5) {
       div.innerText = `${playerSelection.toUpperCase()} vs ${computerSelection.toUpperCase()}`;
       if (player < 5 && computer < 5) {
         score.appendChild(div);
         if (value === "win") player++;
         else if (value === "lose") computer++;
-      } else {
-        isGameOver = true;
       }
       result(player, computer);
-      console.log(isGameOver);
-    });
+    }
   });
-}
+});
