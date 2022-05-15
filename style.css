@@ -1,10 +1,11 @@
-.container {
-  height: 100vh;
+.container, .score{
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.buttons {
+.container {
+  height: 70vh;}
+.buttons, .score {
   padding: 5%;
   font-size: 2em;
   text-transform: uppercase;
