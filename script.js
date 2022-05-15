@@ -1,3 +1,13 @@
+let computer = 0;
+let player = 0;
+const container = document.querySelector(".container");
+const score = document.querySelector(".score");
+const div = document.createElement("div");
+const scoreCards = document.createElement("div");
+const buttons = document.querySelectorAll(".buttons");
+const button = document.querySelector(".buttons");
+let isGameOver = false;
+
 //generate rock, paper, scissors randomly
 function computerPlay() {
   choices = ["rock", "paper", "scissors"];
@@ -28,32 +38,30 @@ function result(player, computer) {
     const winner = document.createElement("div");
     winner.innerText = "GameOver. You Win!!!";
     scoreCards.appendChild(winner);
+    return isGameOver;
   } else if (computer === 5) {
     const winner = document.createElement("div");
     winner.innerText = "GameOver. You Lose!!!";
     scoreCards.appendChild(winner);
+    isGameOver = true;
   }
 }
-
-let computer = 0;
-let player = 0;
-const container = document.querySelector(".container");
-const score = document.querySelector(".score");
-const div = document.createElement("div");
-const scoreCards = document.createElement("div");
-const buttons = document.querySelectorAll(".buttons");
-const button = document.querySelector(".buttons");
-buttons.forEach((button) => {
-  const playerSelection = button.innerHTML;
-  button.addEventListener("click", function returned() {
-    const computerSelection = computerPlay();
-    value = playRound(playerSelection, computerSelection);
-    div.innerText = `${playerSelection.toUpperCase()} vs ${computerSelection.toUpperCase()}`;
-    if (player < 5 && computer < 5) {
-      score.appendChild(div);
-      if (value === "win") player++;
-      else if (value === "lose") computer++;
-    }
-    result(player, computer);
+while (isGameOver != true) {
+  buttons.forEach((button) => {
+    const playerSelection = button.innerHTML;
+    button.addEventListener("click", function returned() {
+      const computerSelection = computerPlay();
+      value = playRound(playerSelection, computerSelection);
+      div.innerText = `${playerSelection.toUpperCase()} vs ${computerSelection.toUpperCase()}`;
+      if (player < 5 && computer < 5) {
+        score.appendChild(div);
+        if (value === "win") player++;
+        else if (value === "lose") computer++;
+      } else {
+        isGameOver = true;
+      }
+      result(player, computer);
+      console.log(isGameOver);
+    });
   });
-});
+}

@@ -1,28 +1,34 @@
-.container, .score{
+.img,
+.container,
+.score {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
-.container {
-  height: 70vh;}
-  .buttons, .score {
-    padding: 5%;
-    font-size: 2em;
-    text-transform: uppercase;
-  }
-  
-  .buttons{
+.text {
+  text-align: center;
+}
+img {
+  width: 50%;
+}
+.buttons,
+.score {
+  padding: 5%;
+  font-size: 2em;
+  text-transform: uppercase;
+}
+.buttons {
   background-size: cover;
 }
 
-.rock{
+.rock {
   background-image: url("images/rock.png");
 }
 
-.paper{
+.paper {
   background-image: url("images/rock.png");
 }
 
-.scissors{
+.scissors {
   background-image: url("images/rock.png");
 }
