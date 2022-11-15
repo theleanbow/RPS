@@ -1,61 +1,46 @@
-let computer = 0;
-let player = 0;
-const container = document.querySelector(".container");
-const score = document.querySelector(".score");
-const div = document.createElement("div");
-const scoreCards = document.createElement("div");
-const buttons = document.querySelectorAll(".buttons");
-const button = document.querySelector(".buttons");
-// let isGameOver = false;
-
-//generate rock, paper, scissors randomly
-function computerPlay() {
-  choices = ["rock", "paper", "scissors"];
-  return choices[Math.floor(Math.random() * 3)];
+let playerWin = 0;
+let computerWin = 0;
+let count = 0;
+function getComputerChoice() {
+  arr = ["rock", "paper", "scissors"];
+  let val = Math.floor(Math.random() * 3);
+  return arr[val];
+}
+function getPlayerSelection() {
+  return (playerSelection = prompt("Enter your choice:").toLowerCase());
 }
 
-//compare the win and loose and return the value
-function playRound(playerSelect, computerSelection) {
-  playerSelection = playerSelect.toLowerCase();
-  if (playerSelection === computerSelection) return "draw";
-  if (
+function playRound(playerSelection, computerSelection) {
+  console.log(playerSelection, computerSelection);
+  if (playerSelection === computerSelection)
+    console.log(`${playerSelection} vs ${computerSelection} It's a draw`);
+  else if (
     (playerSelection == "rock" && computerSelection == "paper") ||
     (playerSelection == "paper" && computerSelection == "scissors") ||
     (playerSelection == "scissors" && computerSelection == "rock")
-  )
-    return "lose";
-  return "win";
-}
-//display the result
-function result(player, computer) {
-  const scoreCards = document.createElement("div");
-  scoreCards.innerText = `${player} vs ${computer}`;
-  div.appendChild(scoreCards);
-  if (player === 5) {
-    const winner = document.createElement("div");
-    winner.innerText = "GameOver. You Win!!!";
-    scoreCards.appendChild(winner);
-    return isGameOver;
-  } else if (computer === 5) {
-    const winner = document.createElement("div");
-    winner.innerText = "GameOver. You Lose!!!";
-    scoreCards.appendChild(winner);
-    isGameOver = true;
+  ) {
+    console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+    playerWin++;
+  } else if (
+    (playerSelection == "paper" && computerSelection == "rock") ||
+    (playerSelection == "scissors" && computerSelection == "paper") ||
+    (playerSelection == "rock" && computerSelection == "scissors")
+  ) {
+    console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+    computerWin++;
+  } else {
+    alert("Invalid Input, try again");
+    count--;
   }
 }
-buttons.forEach((button) => {
-  const playerSelection = button.innerHTML;
-  button.addEventListener("click", function returned() {
-    const computerSelection = computerPlay();
-    value = playRound(playerSelection, computerSelection);
-    if (computer < 5 && player < 5) {
-      div.innerText = `${playerSelection.toUpperCase()} vs ${computerSelection.toUpperCase()}`;
-      if (player < 5 && computer < 5) {
-        score.appendChild(div);
-        if (value === "win") player++;
-        else if (value === "lose") computer++;
-      }
-      result(player, computer);
-    }
-  });
-});
+
+function game() {
+  for (count = 0; count < 5; count++)
+    playRound(getPlayerSelection(), getComputerChoice());
+  if (playerWin > computerWin)
+    console.log(`You: ${playerWin} Computer:  ${computerWin}\nYou won`);
+  else if (playerWin < computerWin)
+    console.log(`You: ${playerWin} Computer:  ${computerWin}\nYou lost`);
+  else console.log(`You: ${playerWin} Computer:  ${computerWin}\nIt's a draw`);
+}
+game();
